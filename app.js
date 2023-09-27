@@ -53,8 +53,32 @@ function renderCategories(categories) {
       const products = await fetchProductsByCategory(textButton)
 
       console.log(products)
+
+      renderProducts(products.products)
     })
   })
+}
+
+function renderProducts(products) {
+  console.log(products)
+
+  const productsSection = document.querySelector('.products')
+
+  let productsList = ''
+
+  products.forEach(product => {
+    productsList += `
+      <article class="product">
+        <img class="product__image" src="${product.thumbnail}" />
+        <div class="product__description">
+          <h2 class="product__title">${product.title}</h2>
+          <p class="product__price">S/ ${product.price}</p>
+        </div>
+      </article>
+    `
+  })
+
+  productsSection.innerHTML = productsList
 }
 
 async function initApp () {
