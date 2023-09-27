@@ -5,11 +5,11 @@ const urlCategories = 'https://dummyjson.com/products/categories'
 const urlProducts = 'https://dummyjson.com/products'
 
 function fetchCategories() {
-  fetch(urlCategories) // Devuelve una promesa
+  return fetch(urlCategories) // Devuelve una promesa
     .then(response => response.json())
-    .then(data => {
-      console.log(data)
-    })
+    // .then(data => {
+    //   console.log(data)
+    // })
 }
 
 async function fetchProducts() {
@@ -20,5 +20,26 @@ async function fetchProducts() {
   console.log(data)
 }
 
-fetchCategories()
-fetchProducts()
+function renderCategories(categories) {
+  // console.log('Renderizando categorias!!!!', categories)
+  const categoriesSection = document.querySelector('.categories')
+
+  let categoryButtons = ''
+
+  categories.forEach(category => {
+    categoryButtons = categoryButtons + `<button>${category}</button>`
+  })
+
+  categoriesSection.innerHTML = categoryButtons
+}
+
+async function initApp () {
+  const categories = await fetchCategories() // Retorna una promesa
+  
+  console.log(categories)
+
+  renderCategories(categories)
+}
+
+initApp()
+// fetchProducts()
