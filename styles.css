@@ -2,15 +2,26 @@ body {
   background-color: aquamarine;
 }
 
+h1 {
+  text-align: center;
+}
+
 .container {
   width: 1152px;
   margin: 0 auto;
 }
 
+.categories {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: .5rem;
+  margin-bottom: 1rem;
+}
+
 .products {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
+  gap: 1rem;
 }
 
 .product{
@@ -19,11 +30,11 @@ body {
 }
 
 .product__description {
-  padding: 15px;
+  padding: 1rem;
 }
 
 .product__image {
-  max-width: 200px;
+  max-width: 100%;
 }
 
 .product__title {
