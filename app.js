@@ -21,9 +21,13 @@ async function fetchProducts() {
 }
 
 async function fetchProductsByCategory(categoryName) {
-  const url = 'https://dummyjson.com/products/category/smartphones'
+  const url = `https://dummyjson.com/products/category/${categoryName}`
 
-  // ...
+  const response = await fetch(url)
+
+  const data = await response.json()
+
+  return data
 }
 
 function renderCategories(categories) {
@@ -41,10 +45,14 @@ function renderCategories(categories) {
   const buttons = document.querySelectorAll('button')
 
   buttons.forEach(button => {
-    button.addEventListener('click', event => {
+    button.addEventListener('click', async (event) => {
       const textButton = event.target.textContent
 
       console.log(textButton)
+
+      const products = await fetchProductsByCategory(textButton)
+
+      console.log(products)
     })
   })
 }
