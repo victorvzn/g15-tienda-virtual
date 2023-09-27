@@ -5,3 +5,4 @@
 * DOM, Eventos
 * HTML + CSS
 
+* API: https://dummyjson.com/docs/products
