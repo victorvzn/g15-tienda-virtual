@@ -20,6 +20,12 @@ async function fetchProducts() {
   console.log(data)
 }
 
+async function fetchProductsByCategory(categoryName) {
+  const url = 'https://dummyjson.com/products/category/smartphones'
+
+  // ...
+}
+
 function renderCategories(categories) {
   // console.log('Renderizando categorias!!!!', categories)
   const categoriesSection = document.querySelector('.categories')
@@ -27,10 +33,20 @@ function renderCategories(categories) {
   let categoryButtons = ''
 
   categories.forEach(category => {
-    categoryButtons = categoryButtons + `<button>${category}</button>`
+    categoryButtons += `<button>${category}</button>`
   })
 
   categoriesSection.innerHTML = categoryButtons
+
+  const buttons = document.querySelectorAll('button')
+
+  buttons.forEach(button => {
+    button.addEventListener('click', event => {
+      const textButton = event.target.textContent
+
+      console.log(textButton)
+    })
+  })
 }
 
 async function initApp () {
