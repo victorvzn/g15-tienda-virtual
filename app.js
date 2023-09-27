@@ -4,12 +4,12 @@ console.log('Hola G15!')
 const urlCategories = 'https://dummyjson.com/products/categories'
 const urlProducts = 'https://dummyjson.com/products'
 
-async function fetchCategories() {
-  const response = await fetch(urlCategories)
-
-  const data = await response.json()
-
-  console.log(data)
+function fetchCategories() {
+  fetch(urlCategories) // Devuelve una promesa
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+    })
 }
 
 async function fetchProducts() {
